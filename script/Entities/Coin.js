@@ -6,10 +6,6 @@ ENGINE.Coin = function(args) {
 
   }, args);
 
-  this.coinSize = 2 * this.radius;
-  this.imageSize = app.images.coins.width;
-  this.animationSteps = this.imageSize / this.coinSize;
-
 };
 
 ENGINE.Coin.prototype = {
@@ -22,8 +18,6 @@ ENGINE.Coin.prototype = {
 
   radius: 5,
 
-  count: 0,
-
   collision: function(object) {
 
     if (object instanceof ENGINE.Player) {
@@ -33,14 +27,9 @@ ENGINE.Coin.prototype = {
 
   },
 
-  render: function(delta) {
+  render: function() {
 
-    if (this.count > this.animationSteps) {
-      this.count = 0;
-    }
-
-    app.layer.drawRegion(app.images.coins, [this.count * this.coinSize, 0, this.coinSize, this.coinSize], this.x, this.y);
-    this.count++;
+    app.layer.fillStyle(this.color).fillCircle(this.x, this.y, this.radius);
 
   }
 
