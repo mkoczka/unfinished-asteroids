@@ -19,6 +19,8 @@ ENGINE.Asteroid = function(args) {
 
 };
 
+
+
 ENGINE.Asteroid.prototype = {
 
   constructor: ENGINE.Asteroid,
