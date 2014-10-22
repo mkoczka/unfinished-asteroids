@@ -30,13 +30,26 @@ ENGINE.Asteroid.prototype = {
   hit: function(data) {
 
     this.hp -= data.damage;
+    app.playSound("asteroid-hit");
 
     if (this.hp <= 0) {
 
       if (this.splits) this.split();
 
       this.collection.remove(this);
+      app.game.players[0].score++;
+      app.playSound("asteroid-crush");
+      this.addCoin();
     }
+
+  },
+
+  addCoin: function() {
+
+    this.collection.add(ENGINE.Coin, {
+      x: this.x,
+      y: this.y
+    });
 
   },
 

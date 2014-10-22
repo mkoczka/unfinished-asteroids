@@ -23,7 +23,8 @@ ENGINE.Player = function(args) {
     maxCooldown: 0.3,
 
     hp: 10,
-    maxHp: 10
+    maxHp: 10,
+    score: 0
 
   }, args);
 
@@ -95,6 +96,8 @@ ENGINE.Player.prototype = {
       team: this.team,
       damage: 1
     });
+
+    app.playSound("shoot");
 
   },
 
